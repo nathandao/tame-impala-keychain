@@ -28,17 +28,27 @@ module face_plate_negative(h) {
      }
 }
 
-union() {
-     translate([0, 0, 0.5]) {
-          face(1.5);
-     }
+module face_plate_possitive(h) {
      difference() {
-          translate([0, 0, 0.75]) {
-               cube([plate_w, plate_h, 1.5], center=true);
+          translate([0, 0, h/2]) {
+               cube([plate_w, plate_h, h], center=true);
           }
-          translate([0, 0, -1]) {
-               face_plate_negative(5);
+          translate([0, 0, 0]) {
+               face_plate_negative(h*3);
           }
      }
-     // cube([plate_w, plate_h, 0.5], center=true);
+}
+
+module rim(h) {
+     difference() {
+          translate([0, 0, h/2]) {
+               cube([plate_w, plate_h, h], center=true);
+          }
+          cube([confetti_w, confetti_h, h*3], center=true);
+     }
+}
+
+union() {
+     rim(3);
+     face_plate_possitive(1.5);
 }
