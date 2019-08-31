@@ -4,13 +4,15 @@ include <variables.scad>
 include <face.scad>;
 include <face_2.scad>;
 
+rim_height = thickness;
+
 module face(h) {
      difference() {
           translate([0, 0, h/2]) {
                cube([confetti_w, confetti_h, h], center=true);
           }
           translate([0, 0, -1]) {
-               scale([1.3, 1.3, 1]) {
+               scale([1.5, 1.5, 1]) {
                     face_wave(h+5);
                }
           }
@@ -49,6 +51,6 @@ module rim(h) {
 }
 
 union() {
-     rim(3);
-     face_plate_possitive(1.5);
+     rim(rim_height - 0.5);
+     face_plate_possitive(thickness / 2);
 }
