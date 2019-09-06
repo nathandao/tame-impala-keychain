@@ -12,7 +12,7 @@ module face(h) {
                cube([confetti_w, confetti_h, h], center=true);
           }
           translate([0, 0, -1]) {
-               scale([1.5, 1.5, 1]) {
+               scale([1.3, 1.3, 1]) {
                     face_wave(h+5);
                }
           }
